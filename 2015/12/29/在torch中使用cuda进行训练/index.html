@@ -4,17 +4,30 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Wei Jin</title>
+  <title>在torch中使用cuda进行训练 | Wei Jin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wei Jin">
-<meta property="og:url" content="http://withwsf.github.io/index.html">
+  <meta name="description" content="0. 说明本文介绍hdf5文件的读取、网络的定义与训练和测试，并强调了如何使用cuda对网络的训练、测试进行加速。
+1. 过程与代码
+1 安装hdf5按照官方tutorial安装torch对hdf5格式文件的支持。
+2 引入必要 package 并读入hdf5数据
+12345require &apos;torch&apos;;----如果是在itorch或itorch notbook中自动引入torchrequire">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在torch中使用cuda进行训练">
+<meta property="og:url" content="http://withwsf.github.io/2015/12/29/在torch中使用cuda进行训练/index.html">
 <meta property="og:site_name" content="Wei Jin">
-<meta property="og:description">
+<meta property="og:description" content="0. 说明本文介绍hdf5文件的读取、网络的定义与训练和测试，并强调了如何使用cuda对网络的训练、测试进行加速。
+1. 过程与代码
+1 安装hdf5按照官方tutorial安装torch对hdf5格式文件的支持。
+2 引入必要 package 并读入hdf5数据
+12345require &apos;torch&apos;;----如果是在itorch或itorch notbook中自动引入torchrequire">
+<meta property="og:updated_time" content="2015-12-29T11:12:21.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wei Jin">
-<meta name="twitter:description">
+<meta name="twitter:title" content="在torch中使用cuda进行训练">
+<meta name="twitter:description" content="0. 说明本文介绍hdf5文件的读取、网络的定义与训练和测试，并强调了如何使用cuda对网络的训练、测试进行加速。
+1. 过程与代码
+1 安装hdf5按照官方tutorial安装torch对hdf5格式文件的支持。
+2 引入必要 package 并读入hdf5数据
+12345require &apos;torch&apos;;----如果是在itorch或itorch notbook中自动引入torchrequire">
   
     <link rel="alternative" href="/atom.xml" title="Wei Jin" type="application/atom+xml">
   
@@ -163,9 +176,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-在torch中使用cuda进行训练" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-在torch中使用cuda进行训练" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/12/29/在torch中使用cuda进行训练/" class="article-date">
@@ -181,12 +192,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/29/在torch中使用cuda进行训练/">在torch中使用cuda进行训练</a>
+    <h1 class="article-title" itemprop="name">
+      在torch中使用cuda进行训练
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Torch/">Torch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -229,106 +251,68 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Torch/">Torch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/23/torch-hdf5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">为Torch创建hdf5训练文件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-
-
-  
-    <article id="post-torch-hdf5" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/23/torch-hdf5/" class="article-date">
-  	<time datetime="2015-12-23T14:13:02.000Z" itemprop="datePublished">2015-12-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/torch-hdf5/">为Torch创建hdf5训练文件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-_Torch_u4E0EHDF5"><a href="#1-_Torch_u4E0EHDF5" class="headerlink" title="1. Torch与HDF5"></a>1. Torch与HDF5</h3><p><strong><a href="http://torch.ch" target="_blank" rel="external">Torch</a></strong> 是用<strong>C/CUDA</strong>作为底层实现，用<strong>LuaJIT</strong>作为接口的机器学习算法框架。</p>
-<p><strong><a href="http://docs.h5py.org/en/latest/quick.html" target="_blank" rel="external">HDF5</a></strong>是用于海量复杂数据集管理的技术,能够支持多种平台与多种语言接口（C，C++，Python等）。</p>
-<p>Torch的tutorial只提供了处理images和random tensors的方法，并没有对其他格式提供示例。本文使用将对如何创建HDF5数据集以及如何在Torch中使用HDF5文件格式做一个梳理。</p>
-<h3 id="2-__u4F7F_u7528Python_u521B_u5EFAHDF5_u6587_u4EF6"><a href="#2-__u4F7F_u7528Python_u521B_u5EFAHDF5_u6587_u4EF6" class="headerlink" title="2. 使用Python创建HDF5文件"></a>2. 使用Python创建HDF5文件</h3><ul>
-<li><p><strong>1  在Python中安装 h5py</strong><br>在Ubuntu下 <code>sudo pip install h5py</code></p>
-</li>
-<li><p><strong>2  创建HDF5对象</strong><br>我们需要的HDF5文件在root (group) 下应该有“data”和“label”两个dataset，并在创建时指定这两个dataset的尺寸。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> h5py, os                             </span><br><span class="line">f=h5py.File(<span class="string">'train.h5'</span>,<span class="string">'w'</span>) <span class="comment">#以'w'模式创建一个名为'train.h5'的HDF5对象</span></span><br><span class="line">f.create_dataset(<span class="string">'data'</span>,(<span class="number">100</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>),dtype=<span class="string">'f8'</span>) <span class="comment">#有100个样本，每个样本有三个channel，每个channle的尺寸是32*32</span></span><br><span class="line">f.create_dataset(<span class="string">'label'</span>,(<span class="number">100</span>,<span class="number">1</span>),dtype=<span class="string">'i'</span>) <span class="comment">#创建存放label的dataset，尺寸是100*1</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>3 写入数据</strong><br>写入数据其实很简单，只需要对dataset中的每个对象赋值即可。我们使用numpy随机生成的数据为例进行赋值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">  temp=np.random.random((<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>))</span><br><span class="line">  f[<span class="string">'data'</span>][i]=temp <span class="comment">#写入data</span></span><br><span class="line">  f[<span class="string">'label'</span>][i]=i%<span class="number">4</span> <span class="comment">#写入label</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>以上，即可生成一个用于训练的train.hdf5文件。</p>
-<h3 id="3-__u5728torch_u4E2D_u4F7F_u7528HDF5_u6587_u4EF6"><a href="#3-__u5728torch_u4E2D_u4F7F_u7528HDF5_u6587_u4EF6" class="headerlink" title="3. 在torch中使用HDF5文件"></a>3. 在torch中使用HDF5文件</h3><p>在torch中读取HDF5文件需要用到<strong>torch-hdf5</strong>,可以参照<a href="https://github.com/deepmind/torch-hdf5/blob/master/doc/usage.md" target="_blank" rel="external">官方文档来安装</a>。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span> <span class="string">'hdf5'</span>;</span><br><span class="line">myFile=hdf5.open(<span class="string">'path_to_hdf5_file'</span>,<span class="string">'r'</span>) <span class="comment">-- 读入HDF5文件</span></span><br><span class="line">trainset=&#123;data=myFile:read(<span class="string">'data'</span>):all(),label=myFile:read(<span class="string">'label'</span>):all():byte()&#125;</span><br></pre></td></tr></table></figure></p>
-<p>trainset是与<a href="https://github.com/soumith/cvpr2015/blob/master/Deep%20Learning%20with%20Torch.ipynb" target="_blank" rel="external">官方tutorial</a>读取’cifar10-train.t7’ 后同样的对象。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">trainset <span class="comment">--输入trainset并执行后可以看到trainset的信息如下</span></span><br><span class="line"> <span class="comment">----------------执行输出的信息-------------------------------------------------</span></span><br><span class="line">｛</span><br><span class="line">data : DoubleTensor - size: <span class="number">100</span>×<span class="number">3</span>×<span class="number">32</span>×<span class="number">32</span></span><br><span class="line">label : ByteTensor -size: <span class="number">100</span>×<span class="number">1</span></span><br><span class="line">｝</span><br></pre></td></tr></table></figure></p>
-<p><strong>按照上述的方法创建trainset和testset并读取数据之后，就接着可以进行训练了，由于内容不在本文范围内，所以略过。</strong></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Torch/">Torch</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="在torch中使用cuda进行训练" data-title="在torch中使用cuda进行训练" data-url="http://withwsf.github.io/2015/12/29/在torch中使用cuda进行训练/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
-  
-  
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -352,8 +336,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

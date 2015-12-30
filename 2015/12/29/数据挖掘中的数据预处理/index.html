@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://withwsf.github.io/2015/12/29/数据挖掘中的数据预处理/index.html">
 <meta property="og:site_name" content="Wei Jin">
 <meta property="og:description" content="0.0 关于 《DATA MINING—Concepts and Techniques》《DATA MINING—Concepts and Techniques》是经典的数据挖掘入门书籍，内容囊括数据挖掘的基本概念、数据的预处理、数据的存储、数据中模式的挖掘、分类、聚类、异常检测等方面，作者是著名的韩家炜教授。数据的预处理在真实世界数据中是非常关键的一步，它既是不同数据挖掘应用的共同起点，又很大程">
-<meta property="og:updated_time" content="2015-12-29T15:36:57.290Z">
+<meta property="og:updated_time" content="2015-12-30T17:56:42.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据挖掘中的数据预处理">
 <meta name="twitter:description" content="0.0 关于 《DATA MINING—Concepts and Techniques》《DATA MINING—Concepts and Techniques》是经典的数据挖掘入门书籍，内容囊括数据挖掘的基本概念、数据的预处理、数据的存储、数据中模式的挖掘、分类、聚类、异常检测等方面，作者是著名的韩家炜教授。数据的预处理在真实世界数据中是非常关键的一步，它既是不同数据挖掘应用的共同起点，又很大程">
@@ -70,10 +70,10 @@
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>菜单</li>
-						<li>Tags</li>
+						<li>標籤</li>
 						
 						
-						<li>Über</li>
+						<li>關於</li>
 						
 					</ul>
 				</div>
@@ -208,7 +208,17 @@
 <li>有些算法对数据存在特殊的要求，比如KNN、Neural Networks、Clustering等基于距离（distance based）的算法在数据进行normalize之后效果会提升。</li>
 </ul>
 <p>解决上述问题需要在将数据送入算法之前进行预处理，具体包括<strong>Data Cleaning</strong>,<strong>Data Intergation</strong>，<strong>Data reduction</strong>,<strong>Data Transformation and Data Discretization</strong>等步骤。下面将对各个部分详细展开。</p>
-<h3 id="1-__u6570_u636E_u6E05_u6D17_uFF08Data_Cleaning_uFF09"><a href="#1-__u6570_u636E_u6E05_u6D17_uFF08Data_Cleaning_uFF09" class="headerlink" title="1. 数据清洗（Data Cleaning）"></a>1. 数据清洗（Data Cleaning）</h3>
+<h3 id="1-__u6570_u636E_u6E05_u6D17_uFF08Data_Cleaning_uFF09"><a href="#1-__u6570_u636E_u6E05_u6D17_uFF08Data_Cleaning_uFF09" class="headerlink" title="1. 数据清洗（Data Cleaning）"></a>1. 数据清洗（Data Cleaning）</h3><p>数据清洗的主要作用是处理数据的某些纪录值缺失，平滑数据中的噪声、发现异常值，改正不一致。</p>
+<h4 id="u503C_u7F3A_u5931"><a href="#u503C_u7F3A_u5931" class="headerlink" title="值缺失"></a>值缺失</h4><p>针对数据中某些记录的值缺失问题（比如用户销售数据中，有些顾客的收入信息缺失，有些顾客的年龄信息缺失），可以采用如下的方式：</p>
+<ul>
+<li>忽略存在缺失值的记录。在分类问题中，如果样本（本文中，’一个样本’和’一条记录’是同义词）的label缺失了，那么这个样本一定是要丢弃的。其他情况下，除非一条记录缺失了多个值，否则这种简单粗暴的方法往往效果不好，尤其当不同的属性值缺失状况相差很大时，效果会更差。</li>
+<li>手动填写缺失的值。根据经验手工补上缺失的值，但是这种活儿谁愿意干呢？</li>
+<li>用全局的常量来替代缺失值。再拿用户销售数据做例子，对于年龄缺失的纪录年龄全用unknow来代替，但是对于数据挖掘算法来说，young和unknow并没有什么本质的不同，都只是属性值的一种而已，所以所有年龄缺失的纪录在算法看来都是同一种年龄—-“unknow”,这反而可能会降低算法的效果。</li>
+<li>使用中值和均值来替代缺失值。某种属性的中值和均值代表了此属性的平均趋势，用它们来代替缺失值不失为一种可行的方案。但是，当属性是“红、绿、蓝”这种离散值时显然不存在中值、均值的概念。</li>
+<li>使用class-specific的中值和均值来代替缺失值。在有监督问题中，一个基本假设是label相同的样本属性也相似，那么，某个样本的缺失值，用其所在类别内的所有样本的在此属性的均值或中值来代替理应效果更好。</li>
+<li>使用最可能的值来填充缺失值。用此样本的其他属性来推断缺失属性的最可能值，实际上这就变成了一个回归或分类问题（属性值连续时是回归问题，离散时是分类问题）。实际中常用<a href="https://en.wikipedia.org/wiki/Bayesian_inference" target="_blank" rel="external">贝叶斯推理</a>或决策树来解决上述问题。<br>上述的第3-第6种方法都会引入偏差，因为补充的缺失值跟真实值很可能不同。第六种方法在现实中非常流行，因为它在推断缺失值时使用的信息最多，那么结果理应更准确。不过需要注意的是，有时缺失值也会提供有用的信息，比如在信用卡申请用户数据中，没有驾照号码很可能是因为没有汽车，而是否有汽车是评价信用等级很有用的信息。</li>
+</ul>
+
       
     </div>
     

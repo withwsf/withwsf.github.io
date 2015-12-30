@@ -4,18 +4,33 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>数据挖掘中的数据预处理 | Wei Jin</title>
+  <title>Python在Windows环境下处理文件路径问题最佳实践 | Wei Jin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0.0 关于 《DATA MINING—Concepts and Techniques》《DATA MINING—Concepts and Techniques》是经典的数据挖掘入门书籍，内容囊括数据挖掘的基本概念、数据的预处理、数据的存储、数据中模式的挖掘、分类、聚类、异常检测等方面，作者是著名的韩家炜教授。数据的预处理在真实世界数据中是非常关键的一步，它既是不同数据挖掘应用的共同起点，又很大程">
+  <meta name="description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
+
+最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
+
+
+也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据挖掘中的数据预处理">
-<meta property="og:url" content="http://withwsf.github.io/2015/12/29/数据挖掘中的数据预处理/index.html">
+<meta property="og:title" content="Python在Windows环境下处理文件路径问题最佳实践">
+<meta property="og:url" content="http://withwsf.github.io/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/index.html">
 <meta property="og:site_name" content="Wei Jin">
-<meta property="og:description" content="0.0 关于 《DATA MINING—Concepts and Techniques》《DATA MINING—Concepts and Techniques》是经典的数据挖掘入门书籍，内容囊括数据挖掘的基本概念、数据的预处理、数据的存储、数据中模式的挖掘、分类、聚类、异常检测等方面，作者是著名的韩家炜教授。数据的预处理在真实世界数据中是非常关键的一步，它既是不同数据挖掘应用的共同起点，又很大程">
-<meta property="og:updated_time" content="2015-12-29T15:36:57.290Z">
+<meta property="og:description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
+
+最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
+
+
+也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
+<meta property="og:updated_time" content="2015-12-30T07:10:14.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据挖掘中的数据预处理">
-<meta name="twitter:description" content="0.0 关于 《DATA MINING—Concepts and Techniques》《DATA MINING—Concepts and Techniques》是经典的数据挖掘入门书籍，内容囊括数据挖掘的基本概念、数据的预处理、数据的存储、数据中模式的挖掘、分类、聚类、异常检测等方面，作者是著名的韩家炜教授。数据的预处理在真实世界数据中是非常关键的一步，它既是不同数据挖掘应用的共同起点，又很大程">
+<meta name="twitter:title" content="Python在Windows环境下处理文件路径问题最佳实践">
+<meta name="twitter:description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
+
+最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
+
+
+也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
   
     <link rel="alternative" href="/atom.xml" title="Wei Jin" type="application/atom+xml">
   
@@ -164,11 +179,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-数据挖掘中的数据预处理" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Python在Windows环境下处理文件路径问题最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/29/数据挖掘中的数据预处理/" class="article-date">
-  	<time datetime="2015-12-29T14:13:02.000Z" itemprop="datePublished">2015-12-29</time>
+      <a href="/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/" class="article-date">
+  	<time datetime="2015-12-30T06:45:38.000Z" itemprop="datePublished">2015-12-30</time>
 </a>
     </div>
   
@@ -181,7 +196,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据挖掘中的数据预处理
+      Python在Windows环境下处理文件路径问题最佳实践
     </h1>
   
 
@@ -190,7 +205,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读经典/">阅读经典</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 	</div>
 
         
@@ -201,14 +216,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="0-0__u5173_u4E8E__u300ADATA_MINING_u2014Concepts_and_Techniques_u300B"><a href="#0-0__u5173_u4E8E__u300ADATA_MINING_u2014Concepts_and_Techniques_u300B" class="headerlink" title="0.0 关于 《DATA MINING—Concepts and Techniques》"></a>0.0 关于 《DATA MINING—Concepts and Techniques》</h3><p>《DATA MINING—Concepts and Techniques》是经典的数据挖掘入门书籍，内容囊括数据挖掘的基本概念、数据的预处理、数据的存储、数据中模式的挖掘、分类、聚类、异常检测等方面，作者是著名的韩家炜教授。数据的预处理在真实世界数据中是非常关键的一步，它既是不同数据挖掘应用的共同起点，又很大程度上影响了数据挖掘应用的效果。我将翻译、整理这本书中关于数据预处理的部分，如果有纰漏欢迎指正。</p>
-<h3 id="0-1__u6570_u636E_u9884_u5904_u7406_u7EFC_u8FF0"><a href="#0-1__u6570_u636E_u9884_u5904_u7406_u7EFC_u8FF0" class="headerlink" title="0.1 数据预处理综述"></a>0.1 数据预处理综述</h3><ul>
-<li>由于真实世界中的数据来源复杂、体积巨大，往往难以避免地存在缺失、噪声、不一致（inconsistencies）等问题。</li>
-<li>当数据的维数过高时还会存在所谓的“<a href="http://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf" target="_blank" rel="external">维数诅咒（Curse of dimensionality）</a>”问题，过高的维度不仅增加了计算量，反而可能会降低算法的效果。</li>
-<li>有些算法对数据存在特殊的要求，比如KNN、Neural Networks、Clustering等基于距离（distance based）的算法在数据进行normalize之后效果会提升。</li>
+        <p>Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。</p>
+<ul>
+<li><strong>最优实践：</strong><br>使用os.path.join来join不同的路径，比如<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path=os.path.join(dirpath,filepath)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>解决上述问题需要在将数据送入算法之前进行预处理，具体包括<strong>Data Cleaning</strong>,<strong>Data Intergation</strong>，<strong>Data reduction</strong>,<strong>Data Transformation and Data Discretization</strong>等步骤。下面将对各个部分详细展开。</p>
-<h3 id="1-__u6570_u636E_u6E05_u6D17_uFF08Data_Cleaning_uFF09"><a href="#1-__u6570_u636E_u6E05_u6D17_uFF08Data_Cleaning_uFF09" class="headerlink" title="1. 数据清洗（Data Cleaning）"></a>1. 数据清洗（Data Cleaning）</h3>
+<p>也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path=dirpath+os.sep+filepath</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>次优方案</strong><br>可以将所有路径都使用正斜线’/‘，不管在Windows和Linux中都适用.</li>
+<li><strong>不要使用</strong><br>在引用的字符串前面加上’r’可以将转义字符串(escaped strings )转换为原始字符串(raw strings)，可以解决部分问题。比如：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file=open(<span class="string">'c:\myfile'</span>) <span class="comment">#打开错误</span></span><br><span class="line">file=open(<span class="string">r'c:\myfile'</span>)<span class="comment">#可以正确打开</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>但是’r’是为了方便书写正则表达式而不是为了解决Windows下文件路径问题而设计的特性，所以会遇到一下问题</p>
+<blockquote>
+<p>file=open(r’c:\dir\’+’myfile’)</p>
+</blockquote>
+<p>上述代码是错误的，虽然’\’失去了转义作用，但仍然有保护作用，其后的‘’’并不会被视为closing delimiter。</p>
+<p>由此可见，使用r不仅没有完全解决问题，还会引入新的问题，所以最好不要使用。</p>
+
       
     </div>
     
@@ -217,18 +242,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Python在Windows环境下处理文件路径问题最佳实践
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/12/29/在torch中使用cuda进行训练/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">在torch中使用cuda进行训练</div>
+    <a href="/2015/12/29/数据挖掘中的数据预处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据挖掘中的数据预处理</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -263,7 +279,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="数据挖掘中的数据预处理" data-title="数据挖掘中的数据预处理" data-url="http://withwsf.github.io/2015/12/29/数据挖掘中的数据预处理/"></div>
+	<div class="ds-thread" data-thread-key="Python在Windows环境下处理文件路径问题最佳实践" data-title="Python在Windows环境下处理文件路径问题最佳实践" data-url="http://withwsf.github.io/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

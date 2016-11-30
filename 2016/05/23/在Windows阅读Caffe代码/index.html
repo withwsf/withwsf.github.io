@@ -4,33 +4,20 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Python在Windows环境下处理文件路径问题最佳实践 | Wei Jin</title>
+  <title>在Windows中阅读Caffe代码 | Wei Jin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
-
-最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
-
-
-也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
+  <meta name="description" content="前言我们都知道世界上最好的IDE是Visual Studio，如果能用VS来调试、阅读Caffe的代码，观察Caffe运行过程，相信理解的效率会大大提高，但将Caffe移植到Windows上非常耗时耗力。最近微软官方发布了Caffe的Windows branch，使用Nuget自动下载配置Caffe各种依赖，使得Caffe在Windows下的安装运行比在原生的Linux环境下更加简单。本文勾勒一下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python在Windows环境下处理文件路径问题最佳实践">
-<meta property="og:url" content="http://withwsf.github.io/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/index.html">
+<meta property="og:title" content="在Windows中阅读Caffe代码">
+<meta property="og:url" content="http://withwsf.github.io/2016/05/23/在Windows阅读Caffe代码/index.html">
 <meta property="og:site_name" content="Wei Jin">
-<meta property="og:description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
-
-最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
-
-
-也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
-<meta property="og:updated_time" content="2016-11-29T13:47:45.934Z">
+<meta property="og:description" content="前言我们都知道世界上最好的IDE是Visual Studio，如果能用VS来调试、阅读Caffe的代码，观察Caffe运行过程，相信理解的效率会大大提高，但将Caffe移植到Windows上非常耗时耗力。最近微软官方发布了Caffe的Windows branch，使用Nuget自动下载配置Caffe各种依赖，使得Caffe在Windows下的安装运行比在原生的Linux环境下更加简单。本文勾勒一下">
+<meta property="og:image" content="http://img.blog.csdn.net/20160523200739474">
+<meta property="og:image" content="http://img.blog.csdn.net/20160523202031729">
+<meta property="og:updated_time" content="2016-11-29T13:47:45.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python在Windows环境下处理文件路径问题最佳实践">
-<meta name="twitter:description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
-
-最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
-
-
-也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
+<meta name="twitter:title" content="在Windows中阅读Caffe代码">
+<meta name="twitter:description" content="前言我们都知道世界上最好的IDE是Visual Studio，如果能用VS来调试、阅读Caffe的代码，观察Caffe运行过程，相信理解的效率会大大提高，但将Caffe移植到Windows上非常耗时耗力。最近微软官方发布了Caffe的Windows branch，使用Nuget自动下载配置Caffe各种依赖，使得Caffe在Windows下的安装运行比在原生的Linux环境下更加简单。本文勾勒一下">
   
     <link rel="alternative" href="/atom.xml" title="Wei Jin" type="application/atom+xml">
   
@@ -179,11 +166,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Python在Windows环境下处理文件路径问题最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-在Windows阅读Caffe代码" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/" class="article-date">
-  	<time datetime="2015-12-30T06:45:38.000Z" itemprop="datePublished">2015-12-30</time>
+      <a href="/2016/05/23/在Windows阅读Caffe代码/" class="article-date">
+  	<time datetime="2016-05-23T07:50:33.000Z" itemprop="datePublished">2016-05-23</time>
 </a>
     </div>
   
@@ -196,7 +183,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Python在Windows环境下处理文件路径问题最佳实践
+      在Windows中阅读Caffe代码
     </h1>
   
 
@@ -205,7 +192,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Caffe/">Caffe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 	</div>
 
         
@@ -216,23 +203,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。</p>
-<ul>
-<li><strong>最优实践：</strong><br>使用os.path.join来join不同的路径，比如<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path=os.path.join(dirpath,filepath)</span><br></pre></td></tr></table></figure>
-</li>
+        <h4 id="u524D_u8A00"><a href="#u524D_u8A00" class="headerlink" title="前言"></a>前言</h4><p>我们都知道世界上最好的IDE是Visual Studio，如果能用VS来调试、阅读Caffe的代码，观察Caffe运行过程，相信理解的效率会大大提高，但将Caffe移植到Windows上非常耗时耗力。<br>最近微软官方发布了Caffe的Windows branch，使用Nuget自动下载配置Caffe各种依赖，使得Caffe在Windows下的安装运行比在原生的Linux环境下更加简单。本文勾勒一下从安装到调试运行的大致步骤，希望能对后来者有帮助。</p>
+<h4 id="Caffe_u7684_u5B89_u88C5"><a href="#Caffe_u7684_u5B89_u88C5" class="headerlink" title="Caffe的安装"></a>Caffe的安装</h4><ul>
+<li>安装Visual Studio 2013</li>
+<li><a href="https://github.com/BVLC/caffe/tree/windows" target="_blank" rel="external">下载</a>Windows branch的git文件，并按照README.md中的指导进行安装(如果不使用CUDA，记得按照指导修改“CommonSettings.props”文件)。<h4 id="u8C03_u8BD5_u4E0E_u8FD0_u884C"><a href="#u8C03_u8BD5_u4E0E_u8FD0_u884C" class="headerlink" title="调试与运行"></a>调试与运行</h4></li>
+<li>第一次进行编译时Nuget会自动下载大约1G大小的依赖，请耐心等待，如果编译过程中出现“<strong>错误    8559    error C2220: 警告被视为错误…</strong>”，请参考<a href="http://115.29.54.164/?/question/281#!answer_form" target="_blank" rel="external">fisherman</a>的解决方法。</li>
+<li>首次编译成功后，鼠标右击classfication项目，之后单击”Set as StartUp Project”选项，设置程序的启动项目<br><img src="http://img.blog.csdn.net/20160523200739474" alt="修改启动项目"></li>
+<li>接着进入classfication项目的classfication.cpp文件中，拉到最下面，找到main函数，修改代码，在代码中指定模型、图片等文件的路径。然后设置断点，就可以可使用VS强大的调试功能一步步观察Caffe的运行过程了。</li>
 </ul>
-<p>也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path=dirpath+os.sep+filepath</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>次优方案</strong><br>可以将所有路径都使用正斜线’/‘，不管在Windows和Linux中都适用.</li>
-<li><strong>不要使用</strong><br>在引用的字符串前面加上’r’可以将转义字符串(escaped strings )转换为原始字符串(raw strings)，可以解决部分问题。比如：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file=open(<span class="string">'c:\myfile'</span>) <span class="comment">#打开错误</span></span><br><span class="line">file=open(<span class="string">r'c:\myfile'</span>)<span class="comment">#可以正确打开</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>但是’r’是为了方便书写正则表达式而不是为了解决Windows下文件路径问题而设计的特性，所以会遇到一下问题</p>
-<blockquote>
-<p>file=open(r’c:\dir\’+’myfile’)</p>
-</blockquote>
-<p>上述代码是错误的，虽然’\’失去了转义作用，但仍然有保护作用，其后的‘’’并不会被视为closing delimiter。</p>
-<p>由此可见，使用r不仅没有完全解决问题，还会引入新的问题，所以最好不要使用。</p>
+<p><img src="http://img.blog.csdn.net/20160523202031729" alt="修改main函数"></p>
 
       
     </div>
@@ -242,18 +221,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/21/C-中的虚函数实现原理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/24/Caffe中的Net类是如何工作的/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          C++中的虚函数实现原理
+          Caffe中的Net类是如何工作的
         
       </div>
     </a>
   
   
-    <a href="/2015/12/29/数据挖掘中的数据预处理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数据挖掘中的数据预处理</div>
+    <a href="/2016/04/23/dl-practical-methodolog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深度学习实用策略</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -288,7 +267,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Python在Windows环境下处理文件路径问题最佳实践" data-title="Python在Windows环境下处理文件路径问题最佳实践" data-url="http://withwsf.github.io/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/"></div>
+	<div class="ds-thread" data-thread-key="在Windows阅读Caffe代码" data-title="在Windows中阅读Caffe代码" data-url="http://withwsf.github.io/2016/05/23/在Windows阅读Caffe代码/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

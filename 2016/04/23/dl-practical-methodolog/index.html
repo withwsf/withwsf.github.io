@@ -4,33 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Python在Windows环境下处理文件路径问题最佳实践 | Wei Jin</title>
+  <title>深度学习实用策略 | Wei Jin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
-
-最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
-
-
-也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
+  <meta name="description" content="本文翻译自DeepLearning balabala
+引言要想在实际生产中应用深度学习技术，仅仅知道算法的公式与原理是远远不够的。优秀的数据工作者需要能够根据特定的应用选择合适的算法，并能够根据实验过程中算法的反馈信息不断进行优化——是收集更多的数据，还是增加模型的复杂度，或者改变数据预处理方法，抑或是对程序进行调试等等。所有这些优化方法都需要耗费大量时间，没有方向性地乱撞显然是行不通的，需要有一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python在Windows环境下处理文件路径问题最佳实践">
-<meta property="og:url" content="http://withwsf.github.io/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/index.html">
+<meta property="og:title" content="深度学习实用策略">
+<meta property="og:url" content="http://withwsf.github.io/2016/04/23/dl-practical-methodolog/index.html">
 <meta property="og:site_name" content="Wei Jin">
-<meta property="og:description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
-
-最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
-
-
-也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
-<meta property="og:updated_time" content="2016-11-29T13:47:45.934Z">
+<meta property="og:description" content="本文翻译自DeepLearning balabala
+引言要想在实际生产中应用深度学习技术，仅仅知道算法的公式与原理是远远不够的。优秀的数据工作者需要能够根据特定的应用选择合适的算法，并能够根据实验过程中算法的反馈信息不断进行优化——是收集更多的数据，还是增加模型的复杂度，或者改变数据预处理方法，抑或是对程序进行调试等等。所有这些优化方法都需要耗费大量时间，没有方向性地乱撞显然是行不通的，需要有一">
+<meta property="og:updated_time" content="2016-11-29T13:47:45.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python在Windows环境下处理文件路径问题最佳实践">
-<meta name="twitter:description" content="Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。
-
-最优实践：使用os.path.join来join不同的路径，比如1path=os.path.join(dirpath,filepath)
-
-
-也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符1path=di">
+<meta name="twitter:title" content="深度学习实用策略">
+<meta name="twitter:description" content="本文翻译自DeepLearning balabala
+引言要想在实际生产中应用深度学习技术，仅仅知道算法的公式与原理是远远不够的。优秀的数据工作者需要能够根据特定的应用选择合适的算法，并能够根据实验过程中算法的反馈信息不断进行优化——是收集更多的数据，还是增加模型的复杂度，或者改变数据预处理方法，抑或是对程序进行调试等等。所有这些优化方法都需要耗费大量时间，没有方向性地乱撞显然是行不通的，需要有一">
   
     <link rel="alternative" href="/atom.xml" title="Wei Jin" type="application/atom+xml">
   
@@ -179,11 +167,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Python在Windows环境下处理文件路径问题最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-dl-practical-methodolog" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/" class="article-date">
-  	<time datetime="2015-12-30T06:45:38.000Z" itemprop="datePublished">2015-12-30</time>
+      <a href="/2016/04/23/dl-practical-methodolog/" class="article-date">
+  	<time datetime="2016-04-22T17:44:36.000Z" itemprop="datePublished">2016-04-23</time>
 </a>
     </div>
   
@@ -196,7 +184,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Python在Windows环境下处理文件路径问题最佳实践
+      深度学习实用策略
     </h1>
   
 
@@ -205,7 +193,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
 	</div>
 
         
@@ -216,23 +204,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Windows中路径分隔符是反斜线’\’，而在Python中’\’又有转义符的作用，因而直接从windows资源管理器复制的路径在Python中是不能正常识别的。</p>
+        <p>本文翻译自DeepLearning balabala</p>
+<h4 id="u5F15_u8A00"><a href="#u5F15_u8A00" class="headerlink" title="引言"></a>引言</h4><p>要想在实际生产中应用深度学习技术，仅仅知道算法的公式与原理是远远不够的。优秀的数据工作者需要能够根据特定的应用选择合适的算法，并能够根据实验过程中算法的反馈信息不断进行优化——是收集更多的数据，还是增加模型的复杂度，或者改变数据预处理方法，抑或是对程序进行调试等等。所有这些优化方法都需要耗费大量时间，没有方向性地乱撞显然是行不通的，需要有一些通用的、原则性的指导。</p>
+<p>机器学习领域有各式各样的模型、训练算法与目标函数，这会给人一种“错觉”，对机器学习专家来说最重要的是掌握各式各样的机器学习技法和各个相关领域的数学知识。实际上，如果使用恰当，即使是烂大街的普通算法，也要比马马虎虎、一知半解使用的“高级”算法效果要好很多。而正确地使用算法很简单，掌握一些很简单的原则与策略就足够了。下面是推荐的机器学习系统设计流程：</p>
 <ul>
-<li><strong>最优实践：</strong><br>使用os.path.join来join不同的路径，比如<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path=os.path.join(dirpath,filepath)</span><br></pre></td></tr></table></figure>
-</li>
+<li>决定目标——首先要明确算法的性能衡量指标(原文是error metric)，以及要将这个衡量指标优化到什么程度。</li>
+<li>尽快建立end to end的pipeline，包括恰当地估计性能指标。</li>
+<li>找出系统的瓶颈，并有针对性优化。找出系统的哪个部分表现低于预期并分析原因——是因为过拟合还是因为欠拟合，还是数据或或代码出了问题。</li>
+<li>不断地进行增量式调整——比如收集新的数据或者调整先验参数，甚至更换算法。</li>
 </ul>
-<p>也可以使用os.sep，python会根据不同的系统自动选择合适的路径分隔符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path=dirpath+os.sep+filepath</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>次优方案</strong><br>可以将所有路径都使用正斜线’/‘，不管在Windows和Linux中都适用.</li>
-<li><strong>不要使用</strong><br>在引用的字符串前面加上’r’可以将转义字符串(escaped strings )转换为原始字符串(raw strings)，可以解决部分问题。比如：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file=open(<span class="string">'c:\myfile'</span>) <span class="comment">#打开错误</span></span><br><span class="line">file=open(<span class="string">r'c:\myfile'</span>)<span class="comment">#可以正确打开</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>但是’r’是为了方便书写正则表达式而不是为了解决Windows下文件路径问题而设计的特性，所以会遇到一下问题</p>
-<blockquote>
-<p>file=open(r’c:\dir\’+’myfile’)</p>
-</blockquote>
-<p>上述代码是错误的，虽然’\’失去了转义作用，但仍然有保护作用，其后的‘’’并不会被视为closing delimiter。</p>
-<p>由此可见，使用r不仅没有完全解决问题，还会引入新的问题，所以最好不要使用。</p>
+<p>为了详细介绍上述的流程，将使用经典的街景门牌号识别系统为例进行说明。街景车能拍下建筑的门牌号并记录拍摄时的位置，该系统识别图片中的门牌号，并在谷歌地图中的相应位置更新信息。相信随着读者一步步了解这个成功的商业应用系统是如何构建的，可以加深对上面提到的设计流程的理解。</p>
+<h4 id="u6027_u80FD_u8861_u91CF_u6307_u6807"><a href="#u6027_u80FD_u8861_u91CF_u6307_u6807" class="headerlink" title="性能衡量指标"></a>性能衡量指标</h4><p>决定系统的性能衡量指标（即error metric）是相当重要的第一步，因为后续所有的工作都是围绕着这个指标进行的。另外，也要对系统的性能要达到何种程度做到心中有数。</p>
+<p>系统的性能衡量指标跟算法要优化的损失函数多数情况下并不相同，比如简单二分类问题，损失函数可以是LR中交叉熵损失、后者SVM中使用hinge loss，或者是简单的感知机使用的0-1损失，但是我们对算法的性能衡量指标却可能是查全率、查准率或者是综合考虑查全率与查准率的…..。</p>
+<p>需要明确的是，绝大多数系统都是做不到没有任何错误的。即使你有无限的多的训练数据而且能恢复真实的概率分布，也突破不了贝叶斯错误（Bayes error）的下界。因为特征含有的信息可能相对于输出变量来说并不完全(比如只知道)，或者系统本身就含有随机性。何况获取无限的训练数据也是不可能的。</p>
+<p>训练数据的多少受到多种因素的制约。实际的应用存在训练数据量与性能的trade-off，收集数据是需要付出代价的，时间、金钱、人力都需要考虑，需要在数据量增加带来的受益与收集数据付出的成本之间进行权衡。如果目的是偏学术性的，要衡量不同算法的性能，那么使用的训练与测试数据是公认的benchmark，是不能够对数据随便进行更改的。</p>
+<p>如何决定要将衡量指标优化到什么程度呢？如果是学术研究的话，至少要比当前的其他算法性能要好后者差不多吧，否则也没有意义。实际商业应用的话，考虑的因素就多一些，</p>
 
       
     </div>
@@ -242,18 +228,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/03/21/C-中的虚函数实现原理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/23/在Windows阅读Caffe代码/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          C++中的虚函数实现原理
+          在Windows中阅读Caffe代码
         
       </div>
     </a>
   
   
-    <a href="/2015/12/29/数据挖掘中的数据预处理/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数据挖掘中的数据预处理</div>
+    <a href="/2016/04/16/C-中的虚继承/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++中的虚</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -288,7 +274,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Python在Windows环境下处理文件路径问题最佳实践" data-title="Python在Windows环境下处理文件路径问题最佳实践" data-url="http://withwsf.github.io/2015/12/30/Python在Windows环境下处理文件路径问题最佳实践/"></div>
+	<div class="ds-thread" data-thread-key="dl-practical-methodolog" data-title="深度学习实用策略" data-url="http://withwsf.github.io/2016/04/23/dl-practical-methodolog/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
